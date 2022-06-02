@@ -1,6 +1,7 @@
 import time
 
 import Logger
+from tabulate import tabulate
 import Tradefuncs
 from Tradefuncs import al,sat
 from Indicators import MACD, RSI ,MA
