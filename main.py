@@ -1,9 +1,9 @@
 import time
 
 import Logger
-import Trader
-from Trader import al,sat
-from Indicators import MACD, RSI
+import Tradefuncs
+from Tradefuncs import al,sat
+from Indicators import MACD, RSI ,MA
 import Information
 import os
 import Envmanager
@@ -14,11 +14,8 @@ from datetime import datetime
 
 
 Envmanager.takevars()
-while True:
-    Logger.printdate()
-    Logger.printindicators()
-    Trader.al()
-    Trader.sat()
+Logger.printdate()
+Logger.printinfo()
 
 
 

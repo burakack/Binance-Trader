@@ -8,7 +8,6 @@ import os
 from binance.client import Client
 from binance.enums import *
 
-
 def sat():
     client = Client(os.getenv('api_key'), os.getenv('api_secret'))
     price = client.get_ticker(symbol=os.getenv('parite'))
@@ -28,10 +27,8 @@ def al():
     price = client.get_ticker(symbol=os.getenv('parite'))
     balance = client.get_asset_balance(asset=os.getenv('stable'))
     coiNumber = format(float(balance['free']), '.4f')
-    coiprice = format(float(price['askPrice']) + 0.0050, '.4f')
+    coiprice = format(float(price['askPrice']), '.4f')
     order = client.order_limit_buy(
         symbol=os.getenv('parite'),
         quantity=coiNumber,
         price=coiprice)
-
-
