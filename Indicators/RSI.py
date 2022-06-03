@@ -4,12 +4,11 @@ import numpy as np
 # pip install pandas
 import pandas as pd
 # pip install python-binance
+import os
 from binance.client import Client
 from binance.enums import *
 
-api_key = 'tn6TO4lHWLSh2ft3F10ywvg2naV5v88ppBYWfVsfp9XDfmWNrqPXSy8Kt8xC92zv'
-api_secret = 'hg7fItAdSanNoHWTthEfzBH5bxjPJz1QwEKZyrQjZIVEcY0g871xAvtEC5Yee0s2'
-client = Client(api_key, api_secret)
+client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
 def getRsi(tradePair,time):
     klines = client.get_klines(symbol=tradePair, interval=time, limit='500')
