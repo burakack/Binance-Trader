@@ -23,4 +23,6 @@ def printinfo():
     ma100 = MA.getMa(os.getenv('parite'), os.getenv('zamandilimi'), 100)
     ma200 = MA.getMa(os.getenv('parite'), os.getenv('zamandilimi'), 200)
     data = [[os.getenv('parite'), rsi, macd, ma50, ma100, ma200, price]]
+    clear()
+    printdate()
     print(tabulate(data, headers=["Parite", "RSI", "MACD", "MA50", "MA100", "MA200", "PRİCE"]))

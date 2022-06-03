@@ -4,7 +4,7 @@ import Logger
 from tabulate import tabulate
 import Tradefuncs
 from Tradefuncs import al,sat
-from Indicators import MACD, RSI ,MA ,BOLLINGER
+from Indicators import MACD, RSI ,MA
 import Information
 import os
 from binance.client import Client
@@ -15,9 +15,8 @@ from datetime import datetime
 # pip install python-binance
 Envmanager.takevars()
 while True:
-    Logger.printdate()
     Logger.printinfo()
-    time.sleep(2)
+    Envmanager.nextcoin()
 
 
 
