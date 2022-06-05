@@ -1,12 +1,5 @@
-import datetime as DT
-import time
-import numpy as np
-# pip install pandas
-import pandas as pd
-# pip install python-binance
 import os
 from binance.client import Client
-from binance.enums import *
 
 
 def sat():
