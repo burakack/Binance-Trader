@@ -18,9 +18,8 @@ def bollingertrader():
         buyprice = float(Information.getprice(os.environ['parite']))
         while buyprice != 0:
             Logger.printinfobollinger()
-            if os.getenv('didbuy') == "1" and Information.getprice(os.environ['parite']) > bollinger[2][-1] and buyprice[
-                0] > \
-                    float(Information.getprice(os.environ['parite'])) * 1.01:
+            if os.getenv('didbuy') == "1" and Information.getprice(os.environ['parite']) > bollinger[2][-1] and buyprice\
+                    > float(Information.getprice(os.environ['parite'])) * 1.01:
                 #Tradefuncs.sat()
                 print("BOT SELLİNG", os.environ['coin'])
-                buyprice[0] = 0
+                buyprice0 = 0

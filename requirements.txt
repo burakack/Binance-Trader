@@ -3,3 +3,5 @@ datetime
 python-binance
 pandas
 tabulate
+ta-lib
+numpy
