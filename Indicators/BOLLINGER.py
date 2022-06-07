@@ -9,7 +9,6 @@ import talib as ta
 from talib import MA_Type
 from binance.client import Client
 from binance.enums import *
-
 client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
 def getBollinger(tradePair,time):

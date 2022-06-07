@@ -1,4 +1,3 @@
-
 # pip install pandas
 import pandas as pd
 from binance.client import Client
@@ -16,4 +15,5 @@ def getMacdValue(tradePair,time):
     ema26 = closeVal.ewm(span=26).mean()
     macd = ema26 - ema12
     macd = macd.values.tolist()
-    return macd[-1]
+    macdd=macd[-1][-1]-macd[-1][-1]*2
+    return macdd

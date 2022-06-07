@@ -24,7 +24,7 @@ def printinfo():
     ma50 = MA.getMa(os.getenv('parite'), os.getenv('zamandilimi'), 50)
     ma100 = MA.getMa(os.getenv('parite'), os.getenv('zamandilimi'), 100)
     ma200 = MA.getMa(os.getenv('parite'), os.getenv('zamandilimi'), 200)
-    data = [[os.getenv('parite'), rsi,macd, format(macdValue[-1],".4f"),BBANDS[0][-1],BBANDS[1][-1],BBANDS[2][-1], ma50, ma100, ma200 ,price]]
+    data = [[os.getenv('parite'), rsi,macd, macdValue,BBANDS[0][-1],BBANDS[1][-1],BBANDS[2][-1], ma50, ma100, ma200 ,price]]
     clear()
     printdate()
     print(tabulate(data, headers=["Parite", "RSI", "MACD","MACDVALUE" ,"BUP","BMİD","BDOWN","MA50", "MA100", "MA200","PRİCE"]))
