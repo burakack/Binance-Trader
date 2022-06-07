@@ -11,7 +11,7 @@ def bollingertrader():
     bollinger = BOLLINGER.getBollinger(os.environ['parite'], os.environ['zamandilimi'])
     if os.getenv('didbuy') == "0" and MACDvalue.getMacdValue(os.environ['parite'], os.environ['zamandilimi']) < 0 and \
             float(Information.getprice(os.environ['parite'])) < bollinger[2][-1] \
-            and RSI.getRsi(os.environ['parite'], os.environ['zaman']) < 50:
+            and RSI.getRsi(os.environ['parite'], os.environ['zamandilimi']) < 50:
 
         print("BOT BUYİNG", os.environ['coin'])
         Tradefuncs.al()
