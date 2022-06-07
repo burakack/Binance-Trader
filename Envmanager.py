@@ -37,7 +37,7 @@ def takevars():
     c.close()
     os.environ['coinsayisi'] = count
     os.environ['coinindex'] = 'a'
-
+    os.environ['didbuy'] = '0'
 
 def nextcoin():
     f = open('coins.txt', 'r')
