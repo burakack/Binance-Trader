@@ -5,7 +5,7 @@ from TradeStrategies import Bollingertrader
 import os
 Envmanager.takevars()
 while True:
-    Logger.printinfo()
+    #Logger.printinfo()
     Bollingertrader.bollingertrader()
     Envmanager.nextcoin()
 

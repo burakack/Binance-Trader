@@ -11,9 +11,9 @@ def clear():
 
 
 def printdate():
+    clear()
     now = datetime.today()
     print(now, " Bot working normally.")
-
 
 def printinfo():
     macdValue=MACDvalue.getMacdValue(os.getenv('parite'), os.getenv('zamandilimi'))
