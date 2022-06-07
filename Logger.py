@@ -35,8 +35,7 @@ def printinfobollinger():
     price = Information.getprice(os.getenv('parite'))
     BBANDS = BOLLINGER.getBollinger(os.getenv('parite'), os.getenv('zamandilimi'))
     data = [
-        [os.getenv('parite'), format(macdValue[-1], ".4f"), BBANDS[0][-1], BBANDS[1][-1], BBANDS[2][-1], price]]
+        [os.getenv('parite'), rsi,macdValue, BBANDS[0][-1], BBANDS[1][-1], BBANDS[2][-1], price]]
     clear()
     printdate()
     print(tabulate(data,headers=["Parite", "RSI", "MACDVALUE", "BUP", "BMİD", "BDOWN", "PRİCE"]))
-

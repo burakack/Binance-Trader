@@ -14,13 +14,13 @@ def bollingertrader():
             and RSI.getRsi(os.environ['parite'], os.environ['zamandilimi']) < 50:
 
         print("BOT BUYİNG", os.environ['coin'])
-        Tradefuncs.al()
-        buyprice[0] = float(Information.getprice(os.environ['parite']))
-        while buyprice[0] != 0:
+        #Tradefuncs.al()
+        buyprice = float(Information.getprice(os.environ['parite']))
+        while buyprice != 0:
             Logger.printinfobollinger()
             if os.getenv('didbuy') == "1" and Information.getprice(os.environ['parite']) > bollinger[2][-1] and buyprice[
                 0] > \
                     float(Information.getprice(os.environ['parite'])) * 1.01:
-                Tradefuncs.sat()
+                #Tradefuncs.sat()
                 print("BOT SELLİNG", os.environ['coin'])
                 buyprice[0] = 0
