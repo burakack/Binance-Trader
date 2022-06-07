@@ -15,5 +15,5 @@ def getBollinger(tradePair,time):
     klines = client.get_klines(symbol=tradePair, interval=time, limit='500')
     close = [float(entry[4]) for entry in klines]
     close_array = np.array(close)
-    upper,middle,lower=ta.BBANDS(close_array,matype=MA_Type.T3)
+    upper,middle,lower=ta.BBANDS(close_array,timeperiod=20)
     return [upper,middle,lower]
