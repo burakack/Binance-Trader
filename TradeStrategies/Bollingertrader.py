@@ -1,4 +1,6 @@
 import os
+from datetime import time
+
 import Information
 from Indicators import BOLLINGER, RSI, MACDvalue ,MACD
 import Logger
@@ -19,9 +21,9 @@ def bollingertrader():
         buyprice = float(Information.getprice(os.environ['parite']))
         while buyprice != 0:
             print(buyprice,"=?=",Information.getprice(os.environ['parite']))
-            if os.getenv('didbuy') == "1" and float(Information.getprice(os.environ['parite'])) > bollinger[1][-1] and buyprice\
-                    <float(Information.getprice(os.environ['parite'])):
+            if os.getenv('didbuy') == "1" and float(Information.getprice(os.environ['parite'])) > bollinger[0][-1]:
                 #Tradefuncs.sat()
                 print("BOT SELLİNG", os.environ['coin'],"PRICE=",Information.getprice(os.environ['parite']))
                 buyprice = 0
                 os.environ['didbuy'] = "0"
+    time.sleep(20)
