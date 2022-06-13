@@ -19,7 +19,6 @@ def migration():
     conn.commit()
     conn.close()
 
-
 def insertcoins():
     print("Coins inserting database")
     conn=sqlite3.connect(('crypto.db'))
