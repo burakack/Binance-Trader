@@ -1,6 +1,8 @@
 import Logger
 import Envmanager
 import os
+
+import Tradefuncs
 from Indicators import MACDvalue
 from TradeStrategies import Bollingertrader
 import Databasemanager
@@ -14,6 +16,7 @@ Databasemanager.insertcoins()
 
 while True:
     Logger.printinfo()
+    print(Tradefuncs.stoploss())
     Envmanager.nextcoin()
 
 
