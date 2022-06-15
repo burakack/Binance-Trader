@@ -7,7 +7,7 @@ def migration():
 
     c=conn.cursor()
 
-    c.execute(""" CREATE TABLE coins (
+    c.execute(""" CREATE TABLE IF NOT EXISTS coins (
                     name text,
                     is15mg int,
                     tdseq15m int,
@@ -26,6 +26,7 @@ def migration():
                     losscount int);
                     """)
     conn.commit()
+    insertuser(0,0,0,0)
     conn.close()
 
 def insertcoins():
@@ -64,13 +65,13 @@ def changetdseq(name,is15mg,tdseq15m,is1hg,tdseq1h,is4hg,tdseq4h):
     conn.commit()
     conn.close()
 
-def changeinfo(money, tradecount, profitcount, losscount):
-    params = (money, tradecount, profitcount, losscount,os.environ['name'] )
+def insertuser(money, tradecount, profitcount, losscount):
+    print("User inserted!")
+    params = (os.environ['name'],money, tradecount, profitcount, losscount )
     conn = sqlite3.connect(('crypto.db'))
 
     c = conn.cursor()
-    c.execute('''UPDATE info SET money=? , tradecount=? , profitcount=? , losscount=?
-     WHERE ?;  ''', params)
+    c.execute('''INSERT INTO info VALUES (?,?,?,?,?) ''', params)
     conn.commit()
     conn.close()
 
