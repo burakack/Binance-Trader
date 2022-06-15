@@ -76,3 +76,32 @@ def insertuser(money, tradecount, profitcount, losscount):
     conn.close()
 
 
+def incrasetradecount():
+    conn = sqlite3.connect(('crypto.db'))
+    c = conn.cursor()
+    c.execute('''UPDATE info SET tradecount = tradecount + 1 WHERE name= ? ''',(os.environ['name'],))
+    conn.commit()
+    conn.close()
+
+def incraselosscount():
+    incrasetradecount()
+    conn = sqlite3.connect(('crypto.db'))
+    c = conn.cursor()
+    c.execute('''UPDATE info SET losscount = losscount + 1 WHERE name= ? ''',(os.environ['name'],))
+    conn.commit()
+    conn.close()
+
+def incraseprofitcount():
+    incrasetradecount()
+    conn = sqlite3.connect(('crypto.db'))
+    c = conn.cursor()
+    c.execute('''UPDATE info SET profitcount = profitcount + 1 WHERE name= ? ''',(os.environ['name'],))
+    conn.commit()
+    conn.close()
+
+def setmoney(money):
+    conn = sqlite3.connect(('crypto.db'))
+    c = conn.cursor()
+    c.execute('''UPDATE info SET money = ? WHERE name= ? ''',(money,os.environ['name']))
+    conn.commit()
+    conn.close()

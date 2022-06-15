@@ -11,13 +11,15 @@ Envmanager.takevars()
 Envmanager.nextcoin()
 if not os.path.exists('crypto.db'):
     Databasemanager.migration()
-
 Databasemanager.insertcoins()
-
+Databasemanager.incraselosscount()
+Databasemanager.incraseprofitcount()
+Databasemanager.incraseprofitcount()
+Databasemanager.incraseprofitcount()
 while True:
     Logger.printinfo()
-    print(Tradefuncs.stoploss())
     Envmanager.nextcoin()
+
 
 
 
