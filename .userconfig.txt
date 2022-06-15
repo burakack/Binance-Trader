@@ -1,3 +1,4 @@
+yourname=
 api_key=
 api_secret=
 zamandilimi=1h

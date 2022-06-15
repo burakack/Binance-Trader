@@ -4,9 +4,14 @@ import os
 def takevars():
     f = open('userconfig.txt', 'r')
 
-    text = f.readline()
-    text = text[8:].strip()
-    os.environ['api_key'] = text
+    name = f.readline()
+    name = name[9:].strip()
+    os.environ['name'] = name
+
+
+    api_key = f.readline()
+    api_key = api_key[8:].strip()
+    os.environ['api_key'] = api_key
 
     apisecret = f.readline()
     apisecret = apisecret[11:].strip()

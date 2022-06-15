@@ -33,9 +33,9 @@ def al():
 def stoploss():
     today = datetime.date.today()
     client = Client(os.getenv('api_key'), os.getenv('api_secret'))
-    week_ago = today - datetime.timedelta(days=6)
-    week_ago = week_ago.strftime('%d %b, %Y')
-    klines2 = client.get_historical_klines(os.environ['parite'], Client.KLINE_INTERVAL_1DAY, str(week_ago))
+    threedays = today - datetime.timedelta(days=3)
+    threedays = threedays.strftime('%d %b, %Y')
+    klines2 = client.get_historical_klines(os.environ['parite'], Client.KLINE_INTERVAL_4HOUR, str(threedays))
     highVal = [float(entry[2]) for entry in klines2]
     minval = [float(entry[3]) for entry in klines2]
     close = [float(entry[4]) for entry in klines2]
