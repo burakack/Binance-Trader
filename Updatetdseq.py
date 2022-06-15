@@ -2,7 +2,6 @@ import os
 from binance.client import Client
 from Indicators.TDsequential import calculatetdseq
 import Databasemanager
-from td_sequential_calculator import TDS
 
 client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
@@ -37,7 +36,6 @@ def updatetdseq(Tradepair):
         tdseq1h = buyvalue
         is1hg = 1
 
-    # calculate for 4h
     # calculate for 4h
     klines = client.get_klines(symbol=Tradepair, interval="4h", limit=50)
     closeVal = [float(entry[4]) for entry in klines]

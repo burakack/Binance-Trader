@@ -21,9 +21,13 @@ def takevars():
     zamandilimi = zamandilimi[12:].strip()
     os.environ['zamandilimi'] = zamandilimi
 
-    coin = f.readline()
-    coin = coin[5:].strip()
+    c = open('coins.txt', 'r')
+    coin = c.readline()
+    coin = coin[0:].strip()
     os.environ['coin'] = coin
+    c.close()
+
+    f.readline()
 
     stable = f.readline()
     stable = stable[7:].strip()
@@ -35,28 +39,29 @@ def takevars():
 
     os.environ['didbuy'] = '0'
 
+
+def calcnumberofcoins():
+    with open(r"coins.txt", 'r') as fp:
+        num_lines = sum(1 for line in fp)
+    os.environ['coinsayisi']=str(num_lines)
+    return num_lines
+
 def nextcoin():
-    coinsayisi=1
     f = open('coins.txt', 'r')
     coin = f.readline()
     coin = coin[0:].strip()
     if(coin == os.environ['coin']):
-        coinsayisi+=1
         coin = f.readline()
         coin = coin[0:].strip()
         os.environ['coin'] = coin
         os.environ['parite'] = os.environ['coin'] + os.environ['stable']
-        os.environ['coinsayisi'] = str(coinsayisi)
         return 1
     while coin != os.environ['coin']:
-        coinsayisi += 1
         coin = f.readline()
         coin = coin[0:].strip()
-    coinsayisi += 1
     coin = f.readline()
     coin = coin[0:].strip()
     if not coin:
-        coinsayisi -= 1
         f.close()
         c = open('coins.txt', 'r')
         coin = c.readline()
@@ -64,10 +69,8 @@ def nextcoin():
         os.environ['coin'] = coin
         os.environ['parite'] = os.environ['coin'] + os.environ['stable']
         c.close()
-        os.environ['coinsayisi']=str(coinsayisi)
         return 1
     os.environ['coin'] = coin
     os.environ['parite'] = os.environ['coin'] + os.environ['stable']
     f.close()
-    os.environ['coinsayisi'] = str(coinsayisi)
     return 1

@@ -11,14 +11,14 @@ import os
 
 Envmanager.takevars()
 Envmanager.nextcoin()
-
+Envmanager.calcnumberofcoins()
 if not os.path.exists('crypto.db'):
     Databasemanager.migration()
 Databasemanager.insertcoins()
 
 while True:
     Updatetdseq.updatetdseq(os.environ['parite'])
-    Logger.printinfo()
+    Logger.printdate()
     Envmanager.nextcoin()
 
 
