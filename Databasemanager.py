@@ -61,7 +61,7 @@ def changetdseq(name,is15mg,tdseq15m,is1hg,tdseq1h,is4hg,tdseq4h):
 
     c=conn.cursor()
     c.execute('''UPDATE coins SET is15mg=? , tdseq15m=? , is1hmg=? , tdseq1h=? , is4hg=?, tdseq4h=?
-     WHERE ?;  ''',params)
+     WHERE name=?;  ''',params)
     conn.commit()
     conn.close()
 
