@@ -11,7 +11,7 @@ def migration():
                     name text,
                     is15mg int,
                     tdseq15m int,
-                    is1hmg int,
+                    is1hg int,
                     tdseq1h int,
                     is4hg int,
                     tdseq4h int);
@@ -49,7 +49,7 @@ def gettdseq(name,time):
 
     c=conn.cursor()
 
-    c.execute("SELECT is"+time+"g ,tdseq"+time+" FROM coins WHERE name="+name+");")
+    c.execute("SELECT is"+time+"g , tdseq"+time+" FROM coins WHERE name='"+name+"'")
     datas=c.fetchone()
     conn.commit()
     conn.close()
@@ -60,7 +60,7 @@ def changetdseq(name,is15mg,tdseq15m,is1hg,tdseq1h,is4hg,tdseq4h):
     conn=sqlite3.connect(('crypto.db'))
 
     c=conn.cursor()
-    c.execute('''UPDATE coins SET is15mg=? , tdseq15m=? , is1hmg=? , tdseq1h=? , is4hg=?, tdseq4h=?
+    c.execute('''UPDATE coins SET is15mg=? , tdseq15m=? , is1hg=? , tdseq1h=? , is4hg=?, tdseq4h=?
      WHERE name=?;  ''',params)
     conn.commit()
     conn.close()
