@@ -1,7 +1,7 @@
 # binance trade bot 
 
 >### Setup
->Rename the `.userconfig.txt file to userconfig.txt` and enter your own api keys
+>Rename the `sample.userconfig.txt file to userconfig.txt` and enter your own api keys
 > 
 >After this you need install modules Run: `pip install -r requirements.txt`
 
@@ -9,6 +9,10 @@
 >  ```
 > python main.py
 >  ```
-Tamamen deneyseldir. Yatırım tavsiyesi değilir.
+> ###PROJECT STILL IN DEVELOPMENT 
+>  ```
+> bot is disabled for real trading (for now)
+>  ```
+Tamamen deneyseldir. Yatırım tavsiyesi değildir.
 
 Not Financial Advice.

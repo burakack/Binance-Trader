@@ -1,6 +1,6 @@
 yourname=
 api_key=
 api_secret=
-zamandilimi=1h
-coin=BTC
+zamandilimi=15m
+coin=MANA
 stable=USDT

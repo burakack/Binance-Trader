@@ -1,4 +1,4 @@
-os
+pysqlite3
 datetime
 python-binance
 pandas
