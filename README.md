@@ -1,4 +1,4 @@
-# binance trade bot 
+# Binance Trader Bot 
 
 >### Setup
 >Rename the `sample.userconfig.txt file to userconfig.txt` and enter your own api keys
