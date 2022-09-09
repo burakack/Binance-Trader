@@ -9,10 +9,10 @@
 >  ```
 > python main.py
 >  ```
-> ###PROJECT STILL IN DEVELOPMENT 
->  ```
-> bot is disabled for real trading (for now)
->  ```
+
+> ### PROJECT STILL IN DEVELOPMENT 
+> Bot disabled for real trading its just paper trading (for now)
+
 Tamamen deneyseldir. Yatırım tavsiyesi değildir.
 
 Not Financial Advice.
