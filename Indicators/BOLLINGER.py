@@ -11,9 +11,11 @@ from binance.client import Client
 from binance.enums import *
 client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
-def getBollinger(tradePair,time):
+
+def getBollinger(tradePair, time):
     klines = client.get_klines(symbol=tradePair, interval=time, limit='500')
     close = [float(entry[4]) for entry in klines]
     close_array = np.array(close)
-    upper,middle,lower=ta.BBANDS(close_array,timeperiod=20,nbdevup=2,nbdevdn=2)
-    return [upper,middle,lower]
+    upper, middle, lower = ta.BBANDS(
+        close_array, timeperiod=20, nbdevup=2, nbdevdn=2)
+    return [upper, middle, lower]

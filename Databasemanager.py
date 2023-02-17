@@ -2,10 +2,11 @@ import os
 import sqlite3
 import Envmanager
 
-def migration():
-    conn=sqlite3.connect(('crypto.db'))
 
-    c=conn.cursor()
+def migration():
+    conn = sqlite3.connect(('crypto.db'))
+
+    c = conn.cursor()
 
     c.execute(""" CREATE TABLE IF NOT EXISTS coins (
                     name text,
@@ -26,48 +27,55 @@ def migration():
                     losscount int);
                     """)
     conn.commit()
-    insertuser(0,0,0,0)
+    insertuser(0, 0, 0, 0)
     conn.close()
+
 
 def insertcoins():
     print("Coins inserting database")
-    conn=sqlite3.connect(('crypto.db'))
-    c=conn.cursor()
+    conn = sqlite3.connect(('crypto.db'))
+    c = conn.cursor()
     for i in range(int(os.environ['coinsayisi'])):
-        c.execute("SELECT name FROM coins WHERE name='"+os.environ['coin']+"';")
-        result=c.fetchone()
+        c.execute("SELECT name FROM coins WHERE name='" +
+                  os.environ['coin']+"';")
+        result = c.fetchone()
         conn.commit()
         if result is None:
             print("Inserted", os.environ['coin'])
-            c.execute(" INSERT INTO coins VALUES ('"+os.environ['coin']+"',0,0,0,0,0,0);")
+            c.execute(" INSERT INTO coins VALUES ('" +
+                      os.environ['coin']+"',0,0,0,0,0,0);")
             conn.commit()
         Envmanager.nextcoin()
     conn.close()
 
-def gettdseq(name,time):
-    conn=sqlite3.connect(('crypto.db'))
 
-    c=conn.cursor()
+def gettdseq(name, time):
+    conn = sqlite3.connect(('crypto.db'))
 
-    c.execute("SELECT is"+time+"g , tdseq"+time+" FROM coins WHERE name='"+name+"'")
-    datas=c.fetchone()
+    c = conn.cursor()
+
+    c.execute("SELECT is"+time+"g , tdseq"+time +
+              " FROM coins WHERE name='"+name+"'")
+    datas = c.fetchone()
     conn.commit()
     conn.close()
     return datas
 
-def changetdseq(name,is15mg,tdseq15m,is1hg,tdseq1h,is4hg,tdseq4h):
-    params=(is15mg,tdseq15m,is1hg,tdseq1h,is4hg,tdseq4h,name)
-    conn=sqlite3.connect(('crypto.db'))
 
-    c=conn.cursor()
+def changetdseq(name, is15mg, tdseq15m, is1hg, tdseq1h, is4hg, tdseq4h):
+    params = (is15mg, tdseq15m, is1hg, tdseq1h, is4hg, tdseq4h, name)
+    conn = sqlite3.connect(('crypto.db'))
+
+    c = conn.cursor()
     c.execute('''UPDATE coins SET is15mg=? , tdseq15m=? , is1hg=? , tdseq1h=? , is4hg=?, tdseq4h=?
-     WHERE name=?;  ''',params)
+     WHERE name=?;  ''', params)
     conn.commit()
     conn.close()
 
+
 def insertuser(money, tradecount, profitcount, losscount):
     print("User inserted!")
-    params = (os.environ['name'],money, tradecount, profitcount, losscount )
+    params = (os.environ['name'], money, tradecount, profitcount, losscount)
     conn = sqlite3.connect(('crypto.db'))
 
     c = conn.cursor()
@@ -79,29 +87,36 @@ def insertuser(money, tradecount, profitcount, losscount):
 def incrasetradecount():
     conn = sqlite3.connect(('crypto.db'))
     c = conn.cursor()
-    c.execute('''UPDATE info SET tradecount = tradecount + 1 WHERE name= ? ''',(os.environ['name'],))
+    c.execute('''UPDATE info SET tradecount = tradecount + 1 WHERE name= ? ''',
+              (os.environ['name'],))
     conn.commit()
     conn.close()
+
 
 def incraselosscount():
     incrasetradecount()
     conn = sqlite3.connect(('crypto.db'))
     c = conn.cursor()
-    c.execute('''UPDATE info SET losscount = losscount + 1 WHERE name= ? ''',(os.environ['name'],))
+    c.execute('''UPDATE info SET losscount = losscount + 1 WHERE name= ? ''',
+              (os.environ['name'],))
     conn.commit()
     conn.close()
+
 
 def incraseprofitcount():
     incrasetradecount()
     conn = sqlite3.connect(('crypto.db'))
     c = conn.cursor()
-    c.execute('''UPDATE info SET profitcount = profitcount + 1 WHERE name= ? ''',(os.environ['name'],))
+    c.execute('''UPDATE info SET profitcount = profitcount + 1 WHERE name= ? ''',
+              (os.environ['name'],))
     conn.commit()
     conn.close()
+
 
 def setmoney(money):
     conn = sqlite3.connect(('crypto.db'))
     c = conn.cursor()
-    c.execute('''UPDATE info SET money = ? WHERE name= ? ''',(money,os.environ['name']))
+    c.execute('''UPDATE info SET money = ? WHERE name= ? ''',
+              (money, os.environ['name']))
     conn.commit()
     conn.close()

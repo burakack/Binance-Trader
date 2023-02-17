@@ -11,8 +11,10 @@ import os
 
 client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
-## tradepair like BTCUSDT,IOTAUSDT time is
-def getMacd(tradePair,time):
+# tradepair like BTCUSDT,IOTAUSDT time is
+
+
+def getMacd(tradePair, time):
     klines = client.get_klines(symbol=tradePair, interval=time, limit=500)
     closeVal = [float(entry[4]) for entry in klines]
     closeVal = pd.DataFrame(closeVal)

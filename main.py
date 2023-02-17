@@ -20,7 +20,3 @@ while True:
     Logger.printdate()
     TDseqtrader.TDseqtrader()
     Envmanager.nextcoin()
-
-
-
-

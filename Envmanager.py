@@ -8,7 +8,6 @@ def takevars():
     name = name[9:].strip()
     os.environ['name'] = name
 
-
     api_key = f.readline()
     api_key = api_key[8:].strip()
     os.environ['api_key'] = api_key
@@ -36,21 +35,21 @@ def takevars():
     os.environ['parite'] = coin + stable
     f.close()
 
-
     os.environ['didbuy'] = '0'
 
 
 def calcnumberofcoins():
     with open(r"coins.txt", 'r') as fp:
         num_lines = sum(1 for line in fp)
-    os.environ['coinsayisi']=str(num_lines)
+    os.environ['coinsayisi'] = str(num_lines)
     return num_lines
+
 
 def nextcoin():
     f = open('coins.txt', 'r')
     coin = f.readline()
     coin = coin[0:].strip()
-    if(coin == os.environ['coin']):
+    if (coin == os.environ['coin']):
         coin = f.readline()
         coin = coin[0:].strip()
         os.environ['coin'] = coin

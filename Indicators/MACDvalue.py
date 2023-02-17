@@ -6,8 +6,10 @@ import os
 
 client = Client(os.getenv('api_key'), os.getenv('api_secret'))
 
-## tradepair like BTCUSDT,IOTAUSDT time is
-def getMacdValue(tradePair,time):
+# tradepair like BTCUSDT,IOTAUSDT time is
+
+
+def getMacdValue(tradePair, time):
     klines = client.get_klines(symbol=tradePair, interval=time, limit=500)
     closeVal = [float(entry[4]) for entry in klines]
     closeVal = pd.DataFrame(closeVal)
@@ -15,5 +17,5 @@ def getMacdValue(tradePair,time):
     ema26 = closeVal.ewm(span=26).mean()
     macd = ema26 - ema12
     macd = macd.values.tolist()
-    macdd=macd[-1][-1]-macd[-1][-1]*2
+    macdd = macd[-1][-1]-macd[-1][-1]*2
     return macdd
